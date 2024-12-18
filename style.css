@@ -1,0 +1,148 @@
+.fonsPlayer {
+  position: relative;
+  width: 500px;
+  height: 312.5px;
+  background: radial-gradient(ellipse at center, rgb(193, 98, 20) 0%, rgb(232, 180, 7) 35%, #34b4e3 100%);
+  overflow: hidden;
+  border: 2px solid black; /* Borde negro de 2px */
+}
+
+
+.ocean { 
+    height: 1%;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    background: #88c9db;
+}
+  
+.wave {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; 
+    position: absolute;
+    top: -198px;
+    width: 6400px;
+    height: 198px;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave.playing {
+    animation: wave 2s cubic-bezier( 0.40, 0.45, 0.63, 0.45) infinite;
+}
+  
+.wave:nth-of-type(2) {
+    top: -175px;
+    opacity: 1;
+}
+  
+.wave:nth-of-type(2).playing {
+    animation: wave 2s cubic-bezier( 0.40, 0.45, 0.63, 0.45) -.125s infinite, swell 7s ease -1.25s infinite;
+}
+
+
+  
+@keyframes wave {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -1600px;
+    }
+}
+  
+@keyframes swell {
+    0%, 100% {
+      transform: translate3d(0,-25px,0);
+    }
+    50% {
+      transform: translate3d(0,5px,0);
+    }
+}
+
+/* Contenedor principal centrado */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: linear-gradient(to bottom,  #cc0000, #151313); /* Gradiant rojo */
+}
+
+
+/* Alinear el título */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Centrar el reproductor y los controles */
+.controlButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  gap: 10px;
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: white;
+}
+
+#volumeSlider {
+  width: 150px;
+}
+/* Posicionamos el logo en la esquina superior derecha */
+.logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;  /* Ajusta el tamaño del logo */
+  height: 50px;
+}
+
+#titol {
+  display: flex;
+  justify-content: center;  /* Centra los elementos horizontalmente */
+  align-items: center;      /* Centra los elementos verticalmente */
+  width: 100%;
+}
+
+
+@keyframes mostrarAltavoz {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.logo2 {
+  display: none;
+  opacity: 1;
+  animation: mostrarAltavoz 5s infinite;
+}
+@keyframes pararAltavoz {
+  0%, 100%{
+    opacity: 0;
+  }
+  
+}
+.logo2.pausado {
+  animation: pararAltavoz infinite; /* Aparece al pausar */
+  display: none;
+}
+
+
+
